@@ -8,7 +8,10 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "lint:fix": "eslint . --fix",
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit",
+    "setup": "npm install && echo 'Please configure your .env file with Supabase credentials'"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

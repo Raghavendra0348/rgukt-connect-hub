@@ -1,11 +1,13 @@
 import { Navbar } from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { Users, Briefcase, Calendar, Heart, GraduationCap, Network } from "lucide-react";
 import { Link } from "react-router-dom";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Index = () => {
+  const isMobile = useIsMobile();
   const features = [
     {
       icon: Users,
@@ -42,10 +44,10 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      
+
       {/* Hero Section */}
-      <section className="relative pt-24 pb-32 overflow-hidden">
-        <div 
+      <section className="relative pt-20 md:pt-24 pb-16 md:pb-32 overflow-hidden">
+        <div
           className="absolute inset-0 z-0 opacity-20"
           style={{
             backgroundImage: `url(${heroBg})`,
@@ -54,27 +56,39 @@ const Index = () => {
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/50 to-background z-0" />
-        
+
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-              Welcome to RGUKT <span className="text-primary">R.K. Valley</span>
-              <br />
-              Alumni Management Portal
+          <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+              Welcome to RGUKT <span className="text-primary">Connect Hub</span>
+              {!isMobile && <br />}
+              <span className={isMobile ? " " : ""}>Alumni Portal</span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Connecting generations of excellence. Build your network, advance your career, 
+            <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
+              Connecting generations of excellence. Build your network, advance your career,
               and give back to the institution that shaped your future.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center px-4">
               <Link to="/auth?mode=signup">
-                <Button size="lg" variant="hero" className="text-lg px-8">
+                <Button size={isMobile ? "default" : "lg"} className="w-full sm:w-auto text-base md:text-lg px-6 md:px-8">
                   Join the Network
                 </Button>
               </Link>
               <Link to="/auth">
-                <Button size="lg" variant="outline" className="text-lg px-8">
+                <Button size={isMobile ? "default" : "lg"} variant="outline" className="w-full sm:w-auto text-base md:text-lg px-6 md:px-8">
                   Sign In
+                </Button>
+              </Link>
+            </div>
+            <div className="flex flex-wrap gap-4 justify-center mt-6">
+              <Link to="/events">
+                <Button size="lg" variant="ghost" className="text-lg px-8">
+                  View Events
+                </Button>
+              </Link>
+              <Link to="/jobs">
+                <Button size="lg" variant="ghost" className="text-lg px-8">
+                  Browse Jobs
                 </Button>
               </Link>
             </div>
@@ -91,7 +105,7 @@ const Index = () => {
               A comprehensive platform designed for alumni, students, and administration
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature, index) => (
               <Card key={index} className="border-2 hover:border-primary transition-colors hover:shadow-card">

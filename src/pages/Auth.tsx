@@ -42,20 +42,25 @@ export default function Auth() {
 
         if (error) throw error;
 
+        // Get user role after successful login
+        const { data: roleData } = await supabase
+          .from("user_roles")
+          .select("role")
+          .eq("user_id", data.user.id)
+          .single();
+
         toast({
           title: "Welcome back!",
           description: "You've successfully signed in.",
         });
 
         // Redirect based on role
-        const { data: userRole } = await supabase
-          .from("user_roles")
-          .select("role")
-          .eq("user_id", data.user.id)
-          .single();
-
-        if (userRole) {
-          navigate(`/dashboard/${userRole.role}`);
+        if (roleData?.role === "admin") {
+          navigate("/dashboard/admin");
+        } else if (roleData?.role === "alumni") {
+          navigate("/dashboard/alumni");
+        } else if (roleData?.role === "student") {
+          navigate("/dashboard/student");
         } else {
           navigate("/");
         }
