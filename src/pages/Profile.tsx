@@ -12,7 +12,6 @@ import { useToast } from "@/hooks/use-toast";
 import { User, Mail, Phone, MapPin, Building, Calendar } from "lucide-react";
 
 interface AlumniProfile {
-        id: string;
         user_id: string;
         batch_year: number;
         branch: string;
@@ -26,7 +25,6 @@ interface AlumniProfile {
 }
 
 interface StudentProfile {
-        id: string;
         user_id: string;
         roll_number: string;
         branch: string;
@@ -99,7 +97,7 @@ export default function Profile() {
                         } else {
                                 const { error } = await supabase
                                         .from("alumni_profiles")
-                                        .insert({ ...profileData, user_id: user.id });
+                                        .insert([{ ...profileData, user_id: user.id } as any]);
 
                                 if (error) throw error;
                         }
@@ -137,7 +135,7 @@ export default function Profile() {
                         } else {
                                 const { error } = await supabase
                                         .from("student_profiles")
-                                        .insert({ ...profileData, user_id: user.id });
+                                        .insert([{ ...profileData, user_id: user.id } as any]);
 
                                 if (error) throw error;
                         }

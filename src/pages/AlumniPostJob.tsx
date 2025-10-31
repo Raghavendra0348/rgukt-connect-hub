@@ -123,6 +123,7 @@ export default function AlumniPostJob() {
                                 id: Date.now(),
                                 ...jobForm,
                                 postedDate: new Date().toLocaleDateString(),
+                                deadline: jobForm.applicationDeadline,
                                 applications: 0,
                                 views: 0,
                                 status: "active" as const
