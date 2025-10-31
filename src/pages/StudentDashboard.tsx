@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/api-client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -24,7 +24,8 @@ import {
   Target,
   Activity,
   Clock,
-  CheckCircle
+  CheckCircle,
+  GraduationCap
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -33,7 +34,16 @@ export default function StudentDashboard() {
   const { toast } = useToast();
   const isMobile = useIsMobile();
   const [loading, setLoading] = useState(true);
-  const [profile, setProfile] = useState<any>(null);
+  const [profile, setProfile] = useState<{
+    id: string;
+    full_name: string;
+    email: string;
+    batch_year?: number;
+    branch?: string;
+    current_year?: string;
+    skills?: string[];
+    interests?: string[];
+  } | null>(null);
   const [stats, setStats] = useState({
     appliedJobs: 0,
     mentorConnections: 0,
@@ -67,11 +77,7 @@ export default function StudentDashboard() {
     { id: 3, title: "Digital Marketing", progress: 25, modules: 8, completed: 2 },
   ]);
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  const checkAuth = async () => {
+  const checkAuth = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser();
 
     if (!user) {
@@ -121,7 +127,11 @@ export default function StudentDashboard() {
     });
 
     setLoading(false);
-  };
+  }, [navigate]);
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();

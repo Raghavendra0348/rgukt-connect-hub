@@ -1,83 +1,139 @@
-# RGUKT R.K. Valley Alumni Management Portal
+# 🎓 RGUKT R.K. Valley Alumni Management Portal
 
-A comprehensive alumni management system built with modern web technologies, connecting generations of RGUKT R.K. Valley graduates.
+A comprehensive, production-ready alumni management system built with React, Express.js, and PostgreSQL - connecting generations of RGUKT R.K. Valley graduates.
 
 ## ✨ Features
 
-🎓 **Multi-Role Authentication**
-- Admin, Alumni, and Student dashboards
-- Role-based access control
-- Secure Supabase authentication
+### 🎓 Multi-Role System
+- **Admin Dashboard** - User management, analytics, and system configuration
+- **Alumni Portal** - Profile management, job posting, event creation, mentorship
+- **Student Portal** - Profile creation, job search, event registration, mentorship requests
 
-🌐 **Alumni Network**
+### 🌐 Alumni Network
 - Connect with graduates worldwide
 - Professional networking capabilities
-- Mentorship programs
+- Advanced search and filtering
+- Mentorship matching system
 
-💼 **Career Services**
-- Job opportunity listings
+### 💼 Career Services
+- Job opportunity listings with applications
 - Internship postings
 - Career guidance and resources
+- Alumni can post opportunities for students
 
-📅 **Event Management**
+### 📅 Event Management
 - University events and reunions
 - Workshop announcements
-- Alumni gatherings
+- Event registration and attendance tracking
+- Alumni-hosted events
 
-👤 **Profile Management**
+### 👤 Profile Management
 - Comprehensive profile system
 - Professional information sharing
+- Skills and expertise tracking
 - Mentor availability settings
 
 ## 🚀 Tech Stack
 
-- **Frontend**: React 18 + TypeScript + Vite
-- **UI Framework**: shadcn/ui + Tailwind CSS
-- **Backend**: Supabase (PostgreSQL + Auth + Storage)
-- **State Management**: TanStack Query
-- **Routing**: React Router DOM
-- **Forms**: React Hook Form + Zod validation
-- **Icons**: Lucide React
+### Frontend
+- **React 18** + **TypeScript** + **Vite**
+- **shadcn/ui** + **Tailwind CSS** - Modern, accessible UI components
+- **TanStack Query** - Data fetching and caching
+- **React Router** - Client-side routing
+- **React Hook Form** + **Zod** - Form validation
 
-## 📋 Quick Start
+### Backend
+- **Express.js** - Node.js web framework
+- **PostgreSQL 16** - Robust relational database
+- **JWT** - Secure authentication
+- **bcrypt** - Password hashing
+- **Helmet.js** + **CORS** - Security
+
+### Database
+- **15+ tables** with proper relationships
+- **Indexes** for performance
+- **Triggers & functions** for automation
+- **Constraints** for data integrity
+
+## 📋 Quick Start (5 Minutes)
 
 ### Prerequisites
 
-- Node.js 18+ and npm/yarn/bun
-- Supabase account and project
+- Node.js 18+
+- PostgreSQL 12+
+- npm or yarn
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd rgukt-connect-hub
-   ```
+**Step 1: Install dependencies**
+```bash
+npm install
+```
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+**Step 2: Create database**
+```bash
+sudo -u postgres psql -c "CREATE DATABASE rgukt_alumni_portal OWNER rgukt_user;"
+```
 
-3. **Environment Setup**
-   ```bash
-   cp .env.example .env
-   ```
-   
-   Update `.env` with your Supabase credentials:
-   ```env
-   VITE_SUPABASE_URL=https://your-project.supabase.co
-   VITE_SUPABASE_PUBLISHABLE_KEY=your-anon-key
-   ```
+**Step 3: Setup database with sample data**
+```bash
+node setup-production-db.cjs
+```
 
-4. **Database Setup**
-   Run the migrations in your Supabase SQL editor:
-   - Execute the files in `supabase/migrations/` in order
+**Step 4: Test the system** *(optional but recommended)*
+```bash
+node test-system.cjs
+```
 
-5. **Start Development Server**
-   ```bash
-   npm run dev
-   ```
+**Step 5: Start the application**
+```bash
+npm run dev
+```
+
+**Step 6: Access the application**
+- Frontend: http://localhost:5173
+- Backend API: http://localhost:3001
+
+## 🔑 Default Login Credentials
+
+### Admin
+```
+Email: admin@rgukt.ac.in
+Password: admin123
+```
+
+### Alumni (Sample)
+```
+Email: john.doe@example.com
+Password: user123
+```
+
+### Student (Sample)
+```
+Email: student1@rgukt.ac.in
+Password: user123
+```
+
+## 📚 Documentation
+
+- **[Quick Start Guide](QUICK_START.md)** - Get up and running in 5 minutes
+- **[Setup Guide](SETUP_GUIDE.md)** - Detailed setup and troubleshooting
+- **[Architecture](ARCHITECTURE.md)** - System architecture and design
+- **[Project Summary](PROJECT_SUMMARY.md)** - Project overview
+
+## 🧪 Testing
+
+Run the comprehensive system test:
+```bash
+node test-system.cjs
+```
+
+Tests:
+- ✅ Database connectivity
+- ✅ Backend API endpoints  
+- ✅ User authentication
+- ✅ JWT tokens
+- ✅ Edge cases and validation
 
    Visit `http://localhost:5173` to see the application.
 

@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/api-client";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ResponsiveLayout } from "@/components/ResponsiveLayout";
-import { useIsMobile } from "@/hooks/use-mobile";
 import {
   Users,
   UserCheck,
@@ -13,7 +12,6 @@ import {
   Calendar,
   GraduationCap,
   TrendingUp,
-  TrendingDown,
   Activity,
   BarChart3,
   FileText,
@@ -22,10 +20,10 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+
 export default function AdminDashboard() {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const isMobile = useIsMobile();
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
     totalUsers: 0,
@@ -45,11 +43,7 @@ export default function AdminDashboard() {
     { id: 4, type: "alumni_approval", user: "Mike Johnson", action: "approved as alumni", time: "1 day ago" },
   ]);
 
-  useEffect(() => {
-    checkAuth();
-  }, []);
-
-  const checkAuth = async () => {
+  const checkAuth = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser();
 
     if (!user) {
@@ -86,7 +80,11 @@ export default function AdminDashboard() {
     });
 
     setLoading(false);
-  };
+  }, [navigate, toast]);
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth]);
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -95,15 +93,10 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background">
-        <Navbar />
-        <div className="pt-24 container mx-auto px-4">
-          <div className="flex items-center justify-center py-12">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
-              <p className="mt-4 text-muted-foreground">Loading dashboard...</p>
-            </div>
-          </div>
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <p className="mt-4 text-muted-foreground">Loading dashboard...</p>
         </div>
       </div>
     );
@@ -262,27 +255,51 @@ export default function AdminDashboard() {
             </CardHeader>
             <CardContent>
               <div className="grid grid-cols-2 gap-4">
-                <Button variant="outline" className="h-auto flex-col items-center p-4 gap-2">
+                <Button 
+                  variant="outline" 
+                  className="h-auto flex-col items-center p-4 gap-2"
+                  onClick={() => navigate("/admin/approve-users")}
+                >
                   <UserCheck className="h-6 w-6" />
                   <span className="text-sm">Approve Users</span>
                 </Button>
-                <Button variant="outline" className="h-auto flex-col items-center p-4 gap-2">
+                <Button 
+                  variant="outline" 
+                  className="h-auto flex-col items-center p-4 gap-2"
+                  onClick={() => navigate("/admin/jobs")}
+                >
                   <Briefcase className="h-6 w-6" />
                   <span className="text-sm">Review Jobs</span>
                 </Button>
-                <Button variant="outline" className="h-auto flex-col items-center p-4 gap-2">
+                <Button 
+                  variant="outline" 
+                  className="h-auto flex-col items-center p-4 gap-2"
+                  onClick={() => navigate("/admin/events")}
+                >
                   <Calendar className="h-6 w-6" />
                   <span className="text-sm">Create Event</span>
                 </Button>
-                <Button variant="outline" className="h-auto flex-col items-center p-4 gap-2">
+                <Button 
+                  variant="outline" 
+                  className="h-auto flex-col items-center p-4 gap-2"
+                  onClick={() => navigate("/admin/reports")}
+                >
                   <BarChart3 className="h-6 w-6" />
                   <span className="text-sm">View Reports</span>
                 </Button>
-                <Button variant="outline" className="h-auto flex-col items-center p-4 gap-2">
+                <Button 
+                  variant="outline" 
+                  className="h-auto flex-col items-center p-4 gap-2"
+                  onClick={() => navigate("/admin/announcements")}
+                >
                   <Bell className="h-6 w-6" />
                   <span className="text-sm">Send Announcement</span>
                 </Button>
-                <Button variant="outline" className="h-auto flex-col items-center p-4 gap-2">
+                <Button 
+                  variant="outline" 
+                  className="h-auto flex-col items-center p-4 gap-2"
+                  onClick={() => navigate("/admin/export")}
+                >
                   <FileText className="h-6 w-6" />
                   <span className="text-sm">Export Data</span>
                 </Button>

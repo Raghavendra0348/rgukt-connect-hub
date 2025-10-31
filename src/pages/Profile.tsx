@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "@/hooks/use-auth";
-import { supabase } from "@/integrations/supabase/client";
+import { supabase } from "@/lib/api-client";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -43,13 +43,7 @@ export default function Profile() {
         const [alumniProfile, setAlumniProfile] = useState<AlumniProfile | null>(null);
         const [studentProfile, setStudentProfile] = useState<StudentProfile | null>(null);
 
-        useEffect(() => {
-                if (user && role) {
-                        fetchProfile();
-                }
-        }, [user, role]);
-
-        const fetchProfile = async () => {
+        const fetchProfile = useCallback(async () => {
                 if (!user) return;
 
                 try {
@@ -82,7 +76,13 @@ export default function Profile() {
                 } finally {
                         setLoading(false);
                 }
-        };
+        }, [user, role]);
+
+        useEffect(() => {
+                if (user && role) {
+                        fetchProfile();
+                }
+        }, [user, role, fetchProfile]);
 
         const handleSaveAlumniProfile = async (profileData: Partial<AlumniProfile>) => {
                 if (!user) return;
