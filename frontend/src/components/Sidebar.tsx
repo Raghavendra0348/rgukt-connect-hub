@@ -102,14 +102,14 @@ export const Sidebar = ({ role, collapsed, onToggle, mobileOpen = false, onMobil
                 <div className="flex h-full flex-col">
                         <div className="flex items-center justify-between p-4">
                                 {(!collapsed || isMobileSheet) && (
-                                        <h2 className="text-lg font-semibold capitalize">{role} Portal</h2>
+                                        <h2 className="text-2xl font-bold capitalize text-white">{role} Portal</h2>
                                 )}
                                 {!isMobileSheet && (
                                         <Button
                                                 variant="ghost"
                                                 size="sm"
                                                 onClick={onToggle}
-                                                className="ml-auto"
+                                                className="ml-auto text-white hover:text-white"
                                         >
                                                 {collapsed ? (
                                                         <ChevronRight className="h-4 w-4" />
@@ -123,9 +123,9 @@ export const Sidebar = ({ role, collapsed, onToggle, mobileOpen = false, onMobil
                                                 variant="ghost"
                                                 size="sm"
                                                 onClick={onMobileClose}
-                                                className="ml-auto"
+                                                className="ml-auto  "
                                         >
-                                                <X className="h-4 w-4" />
+                                                <X className="h-4 w-4 "  />
                                         </Button>
                                 )}
                         </div>
@@ -167,13 +167,14 @@ export const Sidebar = ({ role, collapsed, onToggle, mobileOpen = false, onMobil
         }
 
         return (
-                <div
-                        className={cn(
-                                "fixed left-0 top-16 z-40 h-[calc(100vh-4rem)] bg-card border-r border-border transition-all duration-300",
-                                collapsed ? "w-16" : "w-64"
-                        )}
-                >
-                        <SidebarContent />
-                </div>
-        );
+  <div
+    className={cn(
+      "fixed left-0 top-16 z-40 h-[calc(100vh-4rem)] bg-[hsl(var(--sidebar-background))] border-r border-border transition-all duration-300",
+      collapsed ? "w-16" : "w-64"
+    )}
+  >
+    <SidebarContent />
+  </div>
+);
+
 };

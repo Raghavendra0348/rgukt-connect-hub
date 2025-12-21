@@ -42,22 +42,20 @@ All colors MUST be HSL.
     --gradient-accent: linear-gradient(135deg, hsl(28 80% 52%) 0%, hsl(28 80% 62%) 100%);
     --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-elevated: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    
+/* SIDEBAR THEME */
+--sidebar-background: 222 47% 11%;        /* deep navy / slate */
+--sidebar-foreground: 0% 0% 100%;        /* near-white text */
 
-    --sidebar-background: 0 0% 98%;
+--sidebar-primary: 221 83% 53%;           /* blue highlight */
+--sidebar-primary-foreground: 0% 0% 100%;  /* white text */
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+--sidebar-accent: 222 47% 18%;            /* hover background */
+--sidebar-accent-foreground: 210 40% 96%; /* hover text */
 
-    --sidebar-primary: 240 5.9% 10%;
+--sidebar-border: 222 47% 20%;             /* subtle border */
+--sidebar-ring: 221 83% 53%;               /* focus ring */
 
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {

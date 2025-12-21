@@ -86,7 +86,12 @@ export const Navbar = ({ onMobileMenuToggle, showMobileMenuButton = false }: Nav
             </Button>
           )}
           <Link to="/" className="flex items-center gap-2">
-            <GraduationCap className="h-6 w-6 md:h-8 md:w-8 text-primary" />
+           <img
+  src="/rgukt.jpg"
+  alt="RGUKT Logo"
+  className="h-6 w-6 md:h-8 md:w-8 object-contain"
+/>
+
             <span className="text-lg md:text-xl font-bold hidden sm:block">
               RGUKT Connect Hub
             </span>

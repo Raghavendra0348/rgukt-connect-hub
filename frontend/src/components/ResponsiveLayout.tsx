@@ -34,6 +34,7 @@ export const ResponsiveLayout = ({ role, children }: ResponsiveLayoutProps) => {
                         />
 
                         <Sidebar
+                                
                                 role={role}
                                 collapsed={sidebarCollapsed}
                                 onToggle={handleSidebarToggle}
