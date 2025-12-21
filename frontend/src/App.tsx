@@ -91,8 +91,7 @@ const App = () => (
               </ProtectedRoute>
             }
           />
-           <Route
-            path="/pages/jobs"
+           <Route path="/student/jobs"
             element={
               <ProtectedRoute allowedRoles={["student"]}>
                 <Jobs />

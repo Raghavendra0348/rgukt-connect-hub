@@ -62,7 +62,7 @@ export const Sidebar = ({ role, collapsed, onToggle, mobileOpen = false, onMobil
                 { icon: User, label: "Profile", href: "/profile" },
                 { icon: Users, label: "Alumni Network", href: "/alumni/network" },
                 { icon: MessageCircle, label: "Mentorship", href: "/alumni/mentorship" },
-                { icon: Briefcase, label: "Job Board", href: "/jobs" },
+                { icon: Briefcase, label: "Job Board", href: "/alumni/jobs" },
                 { icon: Building, label: "Post Job", href: "/alumni/post-job" },
                 { icon: Calendar, label: "Events", href: "/events" },
                 { icon: Award, label: "Create Event", href: "/alumni/create-event" },
@@ -73,7 +73,7 @@ export const Sidebar = ({ role, collapsed, onToggle, mobileOpen = false, onMobil
         const studentMenuItems = [
                 { icon: Home, label: "Dashboard", href: "/dashboard/student" },
                 { icon: User, label: "Profile", href: "/profile" },
-                { icon: Briefcase, label: "Job Opportunities", href: "/jobs" },
+                { icon: Briefcase, label: "Job Opportunities", href: "/student/jobs" },
                 { icon: Users, label: "Find Alumni", href: "/student/find-alumni" },
                 { icon: MessageCircle, label: "Mentorship", href: "/student/mentorship" },
                 { icon: Calendar, label: "Events", href: "/events" },
