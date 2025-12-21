@@ -33,7 +33,7 @@ import AdminReports from "./pages/AdminReports";
 import AdminAnnouncements from "./pages/AdminAnnouncements";
 import AdminExport from "./pages/AdminExport";
 import AdminSettings from "./pages/AdminSettings";
-
+import Jobs from "./pages/Jobs";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -88,6 +88,14 @@ const App = () => (
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            }
+          />
+           <Route
+            path="/pages/jobs"
+            element={
+              <ProtectedRoute allowedRoles={["student"]}>
+                <Jobs />
               </ProtectedRoute>
             }
           />
@@ -259,6 +267,7 @@ const App = () => (
               </ProtectedRoute>
             }
           />
+         
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
