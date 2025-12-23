@@ -97,7 +97,10 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-secondary p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-violet-900 via-violet-700 to-violet-400 p-4 relative overflow-hidden">
+      <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-gradient-to-tr from-violet-400/30 via-purple-300/20 to-transparent blur-xl opacity-40 pointer-events-none animate-animate-fade" />
+      <div className="absolute -bottom-20 -right-20 w-64 h-64 rounded-full bg-gradient-to-br from-purple-500/20 via-violet-600/15 to-transparent blur-lg opacity-30 pointer-events-none" />
+
       <Card className="w-full max-w-md shadow-elevated">
         <CardHeader className="space-y-1 text-center">
           <div className="flex justify-center mb-4">

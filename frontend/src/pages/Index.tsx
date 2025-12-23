@@ -48,23 +48,23 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative pt-20 md:pt-24 pb-16 md:pb-32 overflow-hidden">
         <div
-          className="absolute inset-0 z-0 opacity-20"
+          className="absolute inset-0 z-0 opacity-55"
           style={{
             backgroundImage: `url(${heroBg})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/50 to-background z-0" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/40 to-black/60 z-0" />
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-              Welcome to RGUKT <span className="text-primary">Connect Hub</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-violet-600 to-violet-400">
+              Welcome to RGUKT <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-300 to-violet-200">Connect Hub</span>
               {!isMobile && <br />}
               <span className={isMobile ? " " : ""}>Alumni Portal</span>
             </h1>
-            <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
+            <p className="text-base md:text-xl text-muted-foreground max-w-2xl mx-auto px-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               Connecting generations of excellence. Build your network, advance your career,
               and give back to the institution that shaped your future.
             </p>

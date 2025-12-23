@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,7 +10,8 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    /* Page background uses a very light tint from the palette */
+    --background: 197 95% 96%; /* very light cyan/teal */
     --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
@@ -17,16 +20,24 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    --primary: 221 83% 53%;
+    /* Blue Palette (left->right): light -> deep navy */
+    --palette-1: 200 100% 50%; /* bright cyan-blue */
+    --palette-2: 208 92% 46%;  /* vivid blue */
+    --palette-3: 215 82% 40%;  /* medium blue */
+    --palette-4: 220 72% 34%;  /* deep royal blue */
+    --palette-5: 226 60% 26%;  /* darker navy */
+    --palette-6: 230 40% 12%;  /* near-navy */
+
+    --primary: var(--palette-3);
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96%;
+    --secondary: 197 90% 96%;
     --secondary-foreground: 222 47% 11%;
 
-    --muted: 210 40% 96%;
+    --muted: 197 90% 96%;
     --muted-foreground: 215 16% 47%;
 
-    --accent: 28 80% 52%;
+    --accent: var(--palette-4);
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -34,32 +45,36 @@ All colors MUST be HSL.
 
     --border: 214 32% 91%;
     --input: 214 32% 91%;
-    --ring: 221 83% 53%;
+    --ring: var(--palette-2);
 
     --radius: 0.75rem;
     
-    --gradient-hero: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(221 83% 43%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(28 80% 52%) 0%, hsl(28 80% 62%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(var(--palette-2)) 0%, hsl(var(--palette-4)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--palette-1)) 0%, hsl(var(--palette-3)) 100%);
+    /* Light mode page background: vibrant blue → softer blue */
+    --background-gradient: linear-gradient(135deg, hsl(var(--palette-2)) 5%, hsl(var(--palette-4)) 60%, hsl(var(--palette-1)) 100%);
     --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-elevated: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     
+
 /* SIDEBAR THEME */
---sidebar-background: 222 47% 11%;        /* deep navy / slate */
---sidebar-foreground: 0% 0% 100%;        /* near-white text */
+--sidebar-background: 205 60% 12%;        /* near-navy */
+--sidebar-foreground: 0% 0% 100%;         /* near-white text */
 
---sidebar-primary: 221 83% 53%;           /* blue highlight */
---sidebar-primary-foreground: 0% 0% 100%;  /* white text */
+--sidebar-primary: var(--palette-2);      /* highlight */
+--sidebar-primary-foreground: 0% 0% 100%; /* white text */
 
---sidebar-accent: 222 47% 18%;            /* hover background */
---sidebar-accent-foreground: 210 40% 96%; /* hover text */
+--sidebar-accent: 205 60% 18%;            /* hover background */
+--sidebar-accent-foreground: 197 90% 96%; /* hover text */
 
---sidebar-border: 222 47% 20%;             /* subtle border */
---sidebar-ring: 221 83% 53%;               /* focus ring */
+--sidebar-border: 205 60% 16%;            /* subtle border */
+--sidebar-ring: var(--palette-2);         /* focus ring */
 
   }
 
   .dark {
-    --background: 222 47% 11%;
+    /* Dark mode background uses the deepest palette color */
+    --background: 230 40% 12%; /* near-navy */
     --foreground: 210 40% 98%;
 
     --card: 222 47% 15%;
@@ -68,37 +83,46 @@ All colors MUST be HSL.
     --popover: 222 47% 15%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 221 83% 53%;
+    --palette-1: 200 100% 50%;
+    --palette-2: 208 92% 46%;
+    --palette-3: 215 82% 40%;
+    --palette-4: 220 72% 34%;
+    --palette-5: 226 60% 26%;
+    --palette-6: 230 40% 12%;
+
+    --primary: var(--palette-3);
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 217 33% 18%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 206 20% 12%;
+    --secondary-foreground: 197 90% 96%;
 
-    --muted: 217 33% 18%;
+    --muted: 206 20% 12%;
     --muted-foreground: 215 20% 65%;
 
-    --accent: 28 80% 52%;
+    --accent: var(--palette-4);
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 197 90% 96%;
 
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 221 83% 53%;
+    --border: 205 60% 16%;
+    --input: 205 60% 16%;
+    --ring: var(--palette-2);
     
-    --gradient-hero: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(221 83% 43%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(28 80% 52%) 0%, hsl(28 80% 62%) 100%);
-    --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-    --shadow-elevated: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --gradient-hero: linear-gradient(135deg, hsl(var(--palette-2)) 0%, hsl(var(--palette-5)) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(var(--palette-1)) 0%, hsl(var(--palette-3)) 100%);
+    /* Dark mode page background: deep navy gradient */
+    --background-gradient: linear-gradient(135deg, hsl(var(--palette-5)) 5%, hsl(var(--palette-6)) 100%);
+    --shadow-card: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.4);
+    --shadow-elevated: 0 20px 25px -5px rgb(0 0 0 / 0.45), 0 8px 10px -6px rgb(0 0 0 / 0.45);
+    --sidebar-background: 205 60% 12%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: var(--palette-2);
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 205 60% 18%;
+    --sidebar-accent-foreground: 197 90% 96%;
+    --sidebar-border: 205 60% 16%;
+    --sidebar-ring: var(--palette-2);
   }
 }
 
@@ -109,5 +133,11 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background-image: var(--background-gradient);
+    background-color: hsl(var(--background));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: "Poppins", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
   }
 }

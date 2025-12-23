@@ -30,7 +30,7 @@ const pool = new Pool({
   user: 'rgukt_user',
   host: 'localhost', 
   database: 'rgukt_alumni_portal',
-  password: 'rgukt_password',
+  password: 'rgukt1234',
   port: 5432,
 });
 
